@@ -31,12 +31,13 @@ public class App
 
         //Question 3
         List<String> oneHundredStrings = new ArrayList<>();
-        //populateOneHundredStrings(oneHundredStrings);
-        //questionThreePartA(oneHundredStrings);
+        populateOneHundredStrings(oneHundredStrings);
+        questionThreePartA(oneHundredStrings);
         //questionThreePartB();
+        System.out.println("O(n) - Complexity of my solution");
 
         //Question 4
-        //compareTwoStudents();
+        compareTwoStudents();
         //questionFourPartA();
         //questionFourPartB();
         //questionFourPartC();
@@ -52,14 +53,16 @@ public class App
     }
 
     public static void questionOnePartB(ArrayList<Student> list) {
-        System.out.println("\nSort By Name");
+        System.out.println("\nQuestion 1 Part B");
+        System.out.println("Sort By Name");
         Collections.sort(list, new NameComparator(SortType.Ascending));
         displayStudents(list);
 
     }
 
     public static void questionOnePartC(ArrayList<Student> list) {
-        System.out.println("\nSort By Age");
+        System.out.println("\nQuestion 1 Part C");
+        System.out.println("Sort By Age");
         Collections.sort(list, new AgeComparator(SortType.Ascending));
         displayStudents(list);
 
@@ -78,9 +81,11 @@ public class App
     public static void questionTwoPartA(ArrayList<Employee> employees) {
         employees.add(new Employee("Dennis","Stephens"));
         employees.add(new Employee("Kaylee","Morris"));
+        employees.add(new Employee("Kaylee","Morris"));
         employees.add(new Employee("Daniel","James"));
         employees.add(new Employee("Mac","MacDonald"));
         employees.add(new Employee("Charlie","Day"));
+        employees.add(new Employee("Charlie","Space"));
 
         pickLuckyWinner(employees);
     }
@@ -88,6 +93,7 @@ public class App
     public static void pickLuckyWinner(ArrayList<Employee> employees){
         Random generator = new Random();
         int randomIndex = generator.nextInt(employees.size());
+        System.out.println("\nQuestion 2 Part A");
         System.out.println("The Lucky Winner is...");
         System.out.printf(employees.get(randomIndex).getFirstName() + " " + employees.get(randomIndex).getLastName());
         System.out.println();
@@ -104,6 +110,7 @@ public class App
             }
         }
         System.out.println();
+        System.out.println("\nQuestion 2 Part B");
         System.out.println(uniqueNames);
     }
 
@@ -111,18 +118,17 @@ public class App
         Map<String, Integer> nameAndCount = new HashMap<>();
 
         for(Employee name : employees) {
-            Integer count = nameAndCount.get(name);
+            Integer count = nameAndCount.get(name.getFirstName());
             if (count != null) {
-
-                nameAndCount.put(name,(count+1));
+                nameAndCount.put(name.getFirstName(),(count+1));
 
             } else {
-                nameAndCount.put(name, 1); // add new word with count 1
+                nameAndCount.put(name.getFirstName(), 1); // add new word with count 1
             }
         }
-        System.out.println("Count of 'of' : = " +wordCountMap.get("of"));
 
         System.out.println();
+        System.out.println("\nQuestion 2 Part C");
         System.out.println(nameAndCount);
     }
 
@@ -182,5 +188,19 @@ public class App
                 oneHundredStrings.add("Swift");
             }
         }
+    }
+
+    public static void questionThreePartA(List<String> oneHundredStrings) {
+        List<String> oneHundredStringsReduced = new ArrayList<>();
+        for(int i =0; i < oneHundredStrings.size();i++){
+            if(oneHundredStringsReduced.contains(oneHundredStrings.get(i))) {
+
+            } else {
+                oneHundredStringsReduced.add(oneHundredStrings.get(i));
+            }
+        }
+        System.out.println();
+        System.out.println("\nQuestion 3 Part A");
+        System.out.println(oneHundredStringsReduced);
     }
 }
