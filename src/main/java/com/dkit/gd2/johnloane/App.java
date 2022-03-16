@@ -1,7 +1,6 @@
 package com.dkit.gd2.johnloane;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * OOP CA3
@@ -12,28 +11,119 @@ public class App
     public static void main( String[] args )
     {
         //Question 1
-        questionOnePartA();
-        questionOnePartB();
-        questionOnePartC();
-        questionOnePartD();
+        ArrayList<Student> list = new ArrayList<>();
+        questionOnePartA(list);
+        questionOnePartB(list);
+        questionOnePartC(list);
+        //questionOnePartD;
+        System.out.println("questionOnePartD: ArrayList has O(n) time complexity for arbitrary indices of add/remove, but O(1) for the operation at the end of the list. \n");
+
 
         //Question 2
-        questionTwoPartA();
-        questionTwoPartB();
-        questionTwoPartC();
-        questionTwoPartD();
+        // Two Part A - ArrayList
+        ArrayList<Employee> employees = new ArrayList<>();
+        questionTwoPartA(employees);
+        // Two Part B - HashMap
+        questionTwoPartB(employees);
+        // Two Part C - HashMap
+        questionTwoPartC(employees);
+        //questionTwoPartD();
 
         //Question 3
         List<String> oneHundredStrings = new ArrayList<>();
-        populateOneHundredStrings(oneHundredStrings);
-        questionThreePartA(oneHundredStrings);
-        questionThreePartB();
+        //populateOneHundredStrings(oneHundredStrings);
+        //questionThreePartA(oneHundredStrings);
+        //questionThreePartB();
 
         //Question 4
-        compareTwoStudents();
-        questionFourPartA();
-        questionFourPartB();
-        questionFourPartC();
+        //compareTwoStudents();
+        //questionFourPartA();
+        //questionFourPartB();
+        //questionFourPartC();
+    }
+
+    public static void questionOnePartA(ArrayList<Student> list) {
+        // ArrayList of Students
+        list.add(new Student(2, "Jason",19));
+        list.add(new Student(6,"Stephen", 18));
+        list.add(new Student(4,"Sarah",20));
+        list.add(new Student(1,"Daniel",18));
+
+    }
+
+    public static void questionOnePartB(ArrayList<Student> list) {
+        System.out.println("\nSort By Name");
+        Collections.sort(list, new NameComparator(SortType.Ascending));
+        displayStudents(list);
+
+    }
+
+    public static void questionOnePartC(ArrayList<Student> list) {
+        System.out.println("\nSort By Age");
+        Collections.sort(list, new AgeComparator(SortType.Ascending));
+        displayStudents(list);
+
+    }
+
+    public static void displayStudents(ArrayList<Student> list) {
+        System.out.println("---------------------------------------");
+        System.out.printf("%-10s%-20s%-20s\n", "ID: ", "Name: ", "Age:");
+        for(Student g : list)
+        {
+            System.out.printf("%-10s%-20s%-20s\n", g.getId(), g.getName(), g.getAge());
+        }
+        System.out.println("---------------------------------------");
+    }
+
+    public static void questionTwoPartA(ArrayList<Employee> employees) {
+        employees.add(new Employee("Dennis","Stephens"));
+        employees.add(new Employee("Kaylee","Morris"));
+        employees.add(new Employee("Daniel","James"));
+        employees.add(new Employee("Mac","MacDonald"));
+        employees.add(new Employee("Charlie","Day"));
+
+        pickLuckyWinner(employees);
+    }
+
+    public static void pickLuckyWinner(ArrayList<Employee> employees){
+        Random generator = new Random();
+        int randomIndex = generator.nextInt(employees.size());
+        System.out.println("The Lucky Winner is...");
+        System.out.printf(employees.get(randomIndex).getFirstName() + " " + employees.get(randomIndex).getLastName());
+        System.out.println();
+    }
+
+    public static void questionTwoPartB(ArrayList<Employee> employees) {
+        Map<String, Integer> uniqueNames = new HashMap<>();
+
+        for(int i =0; i < employees.size();i++){
+            if(employees.get(i).equals(uniqueNames)) {
+
+            } else {
+                uniqueNames.put(employees.get(i).getFirstName(),(i));
+            }
+        }
+        System.out.println();
+        System.out.println(uniqueNames);
+    }
+
+    public static void questionTwoPartC(ArrayList<Employee> employees) {
+        Map<String, Integer> nameAndCount = new HashMap<>();
+
+        for(Employee name : employees) {
+            Integer count = nameAndCount.get(name);
+            if (count != null) {
+
+                nameAndCount.put(name,(count+1));
+
+            } else {
+                nameAndCount.put(name, 1); // add new word with count 1
+            }
+        }
+        System.out.println("Count of 'of' : = " +wordCountMap.get("of"));
+
+        System.out.println();
+        System.out.println(nameAndCount);
     }
 
     //The method below relates to Question 4
