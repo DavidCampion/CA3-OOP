@@ -40,10 +40,10 @@ public class App
         compareTwoStudents();
         //questionFourPartA();
         System.out.println("\nQuestion 4 Part A");
-        System.out.println("\n Because even though the students are exactly alike the hashcodes dont match so it will return false.");
+        System.out.println("Because even though the students are exactly alike the hashcodes dont match so it will return false.");
         //questionFourPartB();
         System.out.println("\nQuestion 4 Part B");
-        System.out.println("\n Because An object's hashCode method must take the same fields into account as its equals method.");
+        System.out.println("Because An object's hashCode method must take the same fields into account as its equals method.");
         //questionFourPartC();
     }
 
@@ -113,7 +113,6 @@ public class App
                 uniqueNames.put(employees.get(i).getFirstName(),(i));
             }
         }
-        System.out.println();
         System.out.println("\nQuestion 2 Part B");
         System.out.println(uniqueNames);
     }
@@ -131,7 +130,6 @@ public class App
             }
         }
 
-        System.out.println();
         System.out.println("\nQuestion 2 Part C");
         System.out.println(nameAndCount);
     }
@@ -193,7 +191,6 @@ public class App
                 oneHundredStringsReduced.add(oneHundredStrings.get(i));
             }
         }
-        System.out.println();
         System.out.println("\nQuestion 3 Part A");
         System.out.println(oneHundredStringsReduced);
     }
