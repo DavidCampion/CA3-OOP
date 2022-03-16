@@ -16,7 +16,7 @@ public class App
         questionOnePartB(list);
         questionOnePartC(list);
         //questionOnePartD;
-        System.out.println("questionOnePartD: ArrayList has O(n) time complexity for arbitrary indices of add/remove, but O(1) for the operation at the end of the list. \n");
+        System.out.println("questionOnePartD: ArrayList has O(n) time complexity for arbitrary indices of add/remove, but O(1) for the operation at the end of the list.");
 
 
         //Question 2
@@ -39,7 +39,11 @@ public class App
         //Question 4
         compareTwoStudents();
         //questionFourPartA();
+        System.out.println("\nQuestion 4 Part A");
+        System.out.println("\n Because even though the students are exactly alike the hashcodes dont match so it will return false.");
         //questionFourPartB();
+        System.out.println("\nQuestion 4 Part B");
+        System.out.println("\n Because An object's hashCode method must take the same fields into account as its equals method.");
         //questionFourPartC();
     }
 
@@ -132,16 +136,6 @@ public class App
         System.out.println(nameAndCount);
     }
 
-    //The method below relates to Question 4
-    private static void compareTwoStudents()
-    {
-        Student alex1 = new Student(1, "Alex", 22);
-        Student alex2 = new Student(1, "Alex", 22);
-        System.out.println("alex1 hashcode = " + alex1.hashCode());
-        System.out.println("alex2 hashcode = " + alex2.hashCode());
-        System.out.println("Checking equality between alex1 and alex2 = " + alex1.equals(alex2));
-    }
-
     //This is just a helper method to populate the list of strings for question 3. You do not need to read it to answer any of the questions in the CA
     private static void populateOneHundredStrings(List<String> oneHundredStrings)
     {
@@ -202,5 +196,16 @@ public class App
         System.out.println();
         System.out.println("\nQuestion 3 Part A");
         System.out.println(oneHundredStringsReduced);
+    }
+
+    //The method below relates to Question 4
+    private static void compareTwoStudents()
+    {
+        System.out.println();
+        Student alex1 = new Student(1, "Alex", 22);
+        Student alex2 = new Student(1, "Alex", 22);
+        System.out.println("alex1 hashcode = " + alex1.hashCode());
+        System.out.println("alex2 hashcode = " + alex2.hashCode());
+        System.out.println("Checking equality between alex1 and alex2 = " + alex1.equals(alex2));
     }
 }
